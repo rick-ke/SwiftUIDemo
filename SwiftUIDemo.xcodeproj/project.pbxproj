@@ -13,6 +13,7 @@
 		A55E562722B9E4E100E8053D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A55E562622B9E4E100E8053D /* Assets.xcassets */; };
 		A55E562A22B9E4E100E8053D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A55E562922B9E4E100E8053D /* Preview Assets.xcassets */; };
 		A55E562D22B9E4E100E8053D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A55E562B22B9E4E100E8053D /* LaunchScreen.storyboard */; };
+		A55E563722BA1DA600E8053D /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E563622BA1DA600E8053D /* HomeVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A55E562922B9E4E100E8053D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A55E562C22B9E4E100E8053D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A55E562E22B9E4E100E8053D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A55E563622BA1DA600E8053D /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				A55E562022B9E4DF00E8053D /* AppDelegate.swift */,
 				A55E562222B9E4DF00E8053D /* SceneDelegate.swift */,
 				A55E562422B9E4DF00E8053D /* ContentView.swift */,
+				A55E563622BA1DA600E8053D /* HomeVC.swift */,
 				A55E562622B9E4E100E8053D /* Assets.xcassets */,
 				A55E562B22B9E4E100E8053D /* LaunchScreen.storyboard */,
 				A55E562E22B9E4E100E8053D /* Info.plist */,
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A55E562122B9E4DF00E8053D /* AppDelegate.swift in Sources */,
+				A55E563722BA1DA600E8053D /* HomeVC.swift in Sources */,
 				A55E562322B9E4DF00E8053D /* SceneDelegate.swift in Sources */,
 				A55E562522B9E4DF00E8053D /* ContentView.swift in Sources */,
 			);

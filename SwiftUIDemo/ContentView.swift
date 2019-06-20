@@ -9,10 +9,13 @@
 import SwiftUI
 
 struct MapView : View {
+    @State private var zoomed = true
+    
     var body: some View {
         Image("Map")
             .resizable()
-            .aspectRatio(contentMode: .fill)
+            .aspectRatio(contentMode: zoomed ? .fill : .fit)
+            .tapAction { self.zoomed.toggle() }
     }
 }
 
@@ -20,7 +23,7 @@ struct CircleImage : View {
     var body: some View {
         Image("Tree")
             .resizable()
-            .aspectRatio(contentMode: .fill)
+            .aspectRatio(contentMode: .fit)
             .clipShape(Circle())
             .shadow(radius: 10)
             .overlay(
@@ -29,7 +32,46 @@ struct CircleImage : View {
     }
 }
 
+struct TitleLabel : View {
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("陽明山")
+                .font(.title)
+            HStack(alignment: .top) {
+                Text("陽明山國家公園")
+                    .font(.subheadline)
+                Spacer()
+                Text("台北市")
+                    .font(.subheadline)
+            }
+        }
+        .padding()
+    }
+}
+
+struct StarButton : View {
+    var action: () -> Void
+    
+    var body: some View {
+        Button(action: {
+            self.action()
+        }) {
+            VStack {
+                Text("這是一個按鈕")
+                    .padding([.leading, .top, .trailing])
+                Image(systemName: "star")
+                    .padding(.bottom)
+            }
+        }
+        .background(Color.blue, cornerRadius: 10)
+        .foregroundColor(Color.white)
+    }
+}
+
 struct ContentView : View {
+    var tapButton: () -> Void = { }
+    @State private var backgroundColor = false
+    
     var body: some View {
         VStack {
             MapView()
@@ -39,18 +81,21 @@ struct ContentView : View {
                 .offset(y: -130)
                 .padding(.bottom, -130)
             
-            VStack(alignment: .leading) {
-                Text("陽明山")
-                    .font(.title)
-                HStack(alignment: .top) {
-                    Text("陽明山國家公園")
-                        .font(.subheadline)
-                    Spacer()
-                    Text("台北市")
-                        .font(.subheadline)
+            TitleLabel()
+                .tapAction { self.backgroundColor.toggle() }
+            
+            Button(action: {
+                self.tapButton()
+            }) {
+                VStack {
+                    Text("這是一個按鈕")
+                        .padding([.leading, .top, .trailing])
+                    Image(systemName: "star")
+                        .padding(.bottom)
                 }
-            }
-            .padding()
+                }
+                .background(backgroundColor ? Color.blue : Color.green, cornerRadius: 10)
+                .foregroundColor(Color.white)
             
             Spacer()
         }
