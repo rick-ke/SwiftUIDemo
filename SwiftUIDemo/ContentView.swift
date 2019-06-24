@@ -53,15 +53,20 @@ struct StarButton : View {
     var action: () -> Void
     
     var body: some View {
-        Button(action: {
-            self.action()
-        }) {
-            VStack {
-                Text("這是一個按鈕")
-                    .padding([.leading, .top, .trailing])
-                Image(systemName: "star")
-                    .padding(.bottom)
-            }
+        Button(action: action) {
+            BlueStarView()
+        }
+    }
+}
+
+struct BlueStarView : View {
+    
+    var body: some View {
+        VStack {
+            Text("這是一個按鈕")
+                .padding([.leading, .top, .trailing])
+            Image(systemName: "star")
+                .padding(.bottom)
         }
         .background(Color.blue, cornerRadius: 10)
         .foregroundColor(Color.white)
@@ -73,32 +78,35 @@ struct ContentView : View {
     @State private var backgroundColor = false
     
     var body: some View {
-        VStack {
-            MapView()
-                .edgesIgnoringSafeArea(.top)
+        NavigationView {
+            VStack {
+                MapView()
+                    .edgesIgnoringSafeArea(.top)
+                
+                CircleImage()
+                    .offset(y: -130)
+                    .padding(.bottom, -130)
+                
+                TitleLabel()
+                    .tapAction { self.backgroundColor.toggle() }
+                
+                NavigationButton(destination: SecondView()) {
+                    BlueStarView()
+                }
+                
+                Spacer()
+            }
+        }.navigationBarTitle(Text("國家公園"))
+    }
+}
 
-            CircleImage()
-                .offset(y: -130)
-                .padding(.bottom, -130)
-            
-            TitleLabel()
-                .tapAction { self.backgroundColor.toggle() }
-            
-            Button(action: {
-                self.tapButton()
-            }) {
-                VStack {
-                    Text("這是一個按鈕")
-                        .padding([.leading, .top, .trailing])
-                    Image(systemName: "star")
-                        .padding(.bottom)
-                }
-                }
-                .background(backgroundColor ? Color.blue : Color.green, cornerRadius: 10)
-                .foregroundColor(Color.white)
-            
-            Spacer()
-        }
+struct SecondView : View {
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .fill(Color.green)
+            Text("YA!!")
+        }.navigationBarTitle(Text("第二頁標題"))
     }
 }
 
